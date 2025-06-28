@@ -33,9 +33,14 @@ for key, default_value in defaults.items():
 def get_email_details():
     st.header("Generate Your Email Draft")
 
-    st.text_input("Your Name:", key="name")
-    st.text_input("Recipient:", key="recipient")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.text_input("From:", key="name")
+    with col2:
+        st.text_input("To:", key="recipient")
+
     st.text_input("Purpose Of Email:", key="purpose")
+
     st.text_area("State 2-3 Key Points (Key Point 1, Key Point 2, ...): ", key="key_points")
     key_points_list = [point.strip() for point in st.session_state.key_points.split(",") if point.strip()]
 
